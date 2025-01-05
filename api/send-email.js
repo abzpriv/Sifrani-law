@@ -96,9 +96,9 @@ app.post("/send-email", (req, res) => {
     }
 
     // Determine the logo and background color based on the theme
-    const isDarkTheme = false; // Set to `true` for dark theme, `false` for light theme
+    const isDarkTheme = true; // Set to `true` for dark theme, `false` for light theme
     const logo = isDarkTheme
-      ? "http://safranilaw.com/LogoWhite.png" // Dark theme logo (white logo)
+      ? "http://safranilaw.com/LogoWhite.png?v=1" // Dark theme logo (white logo)
       : "http://safranilaw.com/Logo.png"; // Light theme logo (black logo)
 
     // Dark theme: dark background for body, light background for content. Light theme: opposite.
