@@ -110,7 +110,7 @@ app.post("/send-email", (req, res) => {
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
-            color: #333;
+            color: #2c2c2c;
           }
           .container {
             max-width: 700px;
@@ -178,7 +178,7 @@ app.post("/send-email", (req, res) => {
           <!-- Logo and Sifrani Law in one line with background -->
           <div class="logo-container">
             <img src="http://safranilaw.com/LogoWhite.png" alt="Sifrani Law Logo" style="filter: brightness(0) invert(1);">
-            <span>Sifrani Law</span>
+            <span>| Sifrani Law</span>
           </div>
 
           <h2 style="text-align: center; color: #555555;">Thank You for Reaching Out</h2>
