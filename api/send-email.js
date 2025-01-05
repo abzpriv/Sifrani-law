@@ -95,7 +95,6 @@ app.post("/send-email", (req, res) => {
       return res.status(500).send(error.toString());
     }
 
-    // Send confirmation email to the customer
     const customerMailOptions = {
       from: process.env.GMAIL_USER, // Your email address
       to: email, // Customer's email address
@@ -104,14 +103,15 @@ app.post("/send-email", (req, res) => {
     <html>
       <head>
         <style>
-          /* Default styles for light theme */
+          /* Default styles */
           body {
             font-family: 'Garamond', serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
-            color: #2c2c2c;
+            color: #333;
           }
+
           .container {
             max-width: 700px;
             margin: 0 auto;
@@ -120,28 +120,42 @@ app.post("/send-email", (req, res) => {
             background-color: #ffffff;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
           }
-          .logo-container {
+
+          .header {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: #ffffff;
+            background-color: #000;
             padding: 10px 20px;
             border-radius: 10px;
+            transition: background-color 0.3s ease;
           }
-          .logo-container img {
+
+          .header img {
             max-height: 40px;
+            filter: brightness(0) invert(1);
           }
-          .logo-container span {
+
+          .header span {
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
             margin-left: 10px;
           }
-          .text-content {
+
+          h2 {
+            text-align: center;
             color: #555555;
+            font-size: 26px;
+            margin-top: 20px;
+          }
+
+          p {
             font-size: 18px;
             line-height: 1.6;
+            color: #333;
           }
+
           .footer {
             text-align: center;
             margin-top: 30px;
@@ -149,29 +163,32 @@ app.post("/send-email", (req, res) => {
             color: #888888;
           }
 
-          /* Dark theme styles */
+          /* Dark mode styles */
           @media (prefers-color-scheme: dark) {
             body {
-              background-color: #2c2c2c;
-              color: #e0e0e0;
+              background-color: #181818;
+              color: #f9f9f9;
             }
+
             .container {
+              background-color: #2a2a2a;
+              box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            }
+
+            .header {
               background-color: #333;
             }
-            .logo-container {
-              background-color: #222;
+
+            .header span {
+              color: #ffffff;
             }
-            .logo-container img {
-              content: url('http://safranilaw.com/LogoWhite.png') !important; /* Force dark theme logo */
+
+            p {
+              color: #e0e0e0;
             }
-            .logo-container span {
-              color: #fff;
-            }
-            .text-content {
-              color: #d0d0d0;
-            }
+
             .footer {
-              color: #888888;
+              color: #bbbbbb;
             }
           }
         </style>
@@ -179,16 +196,15 @@ app.post("/send-email", (req, res) => {
       <body>
         <div class="container">
           <!-- Logo and Sifrani Law in one line with background -->
-          <div class="logo-container">
-            <!-- Light theme logo: Logo.png, Dark theme logo: LogoWhite.png -->
-            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="max-height: 40px;">
+          <div class="header">
+            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo">
             <span>| Sifrani Law</span>
           </div>
 
-          <h2 style="text-align: center; color: #555555;">Thank You for Reaching Out</h2>
-          <p class="text-content">Dear ${name},</p>
-          <p class="text-content">Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
-          <p class="text-content">Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
+          <h2>Thank You for Reaching Out</h2>
+          <p>Dear ${name},</p>
+          <p>Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
+          <p>Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
           <div class="footer">
             <p>We will get back to you shortly. Thank you for your patience.</p>
             <p>&copy; ${new Date().getFullYear()} Sifrani Law</p>
