@@ -161,6 +161,9 @@ app.post("/send-email", (req, res) => {
             .logo-container {
               background-color: #222;
             }
+            .logo-container img {
+              content: url('http://safranilaw.com/LogoWhite.png'); /* Dark theme logo */
+            }
             .logo-container span {
               color: #fff;
             }
@@ -177,8 +180,8 @@ app.post("/send-email", (req, res) => {
         <div class="container">
           <!-- Logo and Sifrani Law in one line with background -->
           <div class="logo-container">
-            <!-- Light theme: Logo.png, Dark theme: LogoWhite.png -->
-            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="filter: brightness(0) invert(1);">
+            <!-- Light theme logo: Logo.png, Dark theme logo: LogoWhite.png -->
+            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="max-height: 40px;">
             <span>| Sifrani Law</span>
           </div>
 
