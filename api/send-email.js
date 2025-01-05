@@ -24,9 +24,9 @@ const transporter = nodemailer.createTransport({
 
 // POST route to send email
 app.post("/send-email", (req, res) => {
-  const { name, email, subject, message, theme } = req.body; // Added theme parameter to choose the theme
+  const { name, email, subject, message, theme } = req.body;
 
-  // Check if the theme is dark or light; default to dark if not specified
+  // Default to dark theme if not specified
   const isDarkTheme = theme === "dark";
 
   // Email content for dark theme
@@ -92,6 +92,7 @@ app.post("/send-email", (req, res) => {
   // Send email to your email address
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
+      console.error("Error sending email:", error);
       return res.status(500).send(error.toString());
     }
 
@@ -104,7 +105,6 @@ app.post("/send-email", (req, res) => {
     <html>
       <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333;">
         <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-          <!-- Logo and Sifrani Law in one line -->
           <div style="display: flex; justify-content: flex-start; align-items: center;">
             <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
             <span style="font-size: 24px; font-weight: bold; color: #333;">Sifrani Law</span>
@@ -126,8 +126,10 @@ app.post("/send-email", (req, res) => {
 
     transporter.sendMail(customerMailOptions, (customerError, customerInfo) => {
       if (customerError) {
+        console.error("Error sending customer email:", customerError);
         return res.status(500).send(customerError.toString());
       }
+      console.log("Email sent:", info.response);
       res.status(200).send("Email sent: " + info.response);
     });
   });
