@@ -7,7 +7,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = process.env.PORT || 3000; // Use environment variable PORT or default to 5000
+const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -24,15 +24,15 @@ const transporter = nodemailer.createTransport({
 
 // POST route to send email
 app.post("/send-email", (req, res) => {
-  const { name, email, subject, message, theme } = req.body;
+  const { name, email, subject, message, theme } = req.body; // Added theme parameter to choose the theme
 
-  // Default to dark theme if not specified
+  // Check if the theme is dark or light; default to dark if not specified
   const isDarkTheme = theme === "dark";
 
   // Email content for dark theme
   const darkThemeHTML = `
     <html>
-      <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #222222; color: #f5f5f5;">
+      <body style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #222222; color: #f5f5f5;">
         <div style="max-width: 700px; margin: 0 auto; background-color: #2c2f36; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
           <div style="background-color: #1a1c20; color: #ffffff; padding: 25px; text-align: center; border-radius: 15px 15px 0 0;">
             <h1 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e0e0e0;">Contact Form Submission</h1>
@@ -57,7 +57,7 @@ app.post("/send-email", (req, res) => {
   // Email content for light theme
   const lightThemeHTML = `
     <html>
-      <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #ffffff; color: #333333;">
+      <body style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #ffffff; color: #333333;">
         <div style="max-width: 700px; margin: 0 auto; background-color: #f8f9fa; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
           <div style="background-color: #555555; color: #ffffff; padding: 25px; text-align: center; border-radius: 15px 15px 0 0;">
             <h1 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e0e0e0;">Contact Form Submission</h1>
@@ -92,7 +92,6 @@ app.post("/send-email", (req, res) => {
   // Send email to your email address
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error("Error sending email:", error);
       return res.status(500).send(error.toString());
     }
 
@@ -101,15 +100,34 @@ app.post("/send-email", (req, res) => {
       from: process.env.GMAIL_USER, // Your email address
       to: email, // Customer's email address
       subject: "Thank You for Reaching Out to Sifrani Law",
-      html: htmlContent, // Same content as above, without the need to duplicate
+      html: `
+    <html>
+      <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333;">
+        <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+          <!-- Logo and Sifrani Law in one line -->
+          <div style="display: flex; justify-content: flex-start; align-items: center;">
+            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
+            <span style="font-size: 24px; font-weight: bold; color: #333;">Sifrani Law</span>
+          </div>
+
+          <h2 style="text-align: center; color: #555555;">Thank You for Reaching Out</h2>
+          <p style="font-size: 18px; line-height: 1.6;">Dear ${name},</p>
+          <p style="font-size: 18px; line-height: 1.6;">Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
+          <p style="font-size: 18px; line-height: 1.6;">Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
+          <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #888888;">
+            <p>We will get back to you shortly. Thank you for your patience.</p>
+            <p>&copy; ${new Date().getFullYear()} Sifrani Law</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `,
     };
 
     transporter.sendMail(customerMailOptions, (customerError, customerInfo) => {
       if (customerError) {
-        console.error("Error sending customer email:", customerError);
         return res.status(500).send(customerError.toString());
       }
-      console.log("Email sent:", info.response);
       res.status(200).send("Email sent: " + info.response);
     });
   });
