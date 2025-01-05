@@ -105,15 +105,21 @@ app.post("/send-email", (req, res) => {
         <style>
           /* Media query for dark mode */
           @media (prefers-color-scheme: dark) {
-            .logo {
-              content: url('http://safranilaw.com/LogoWhite.png');
+            .logo-light {
+              display: none;
+            }
+            .logo-dark {
+              display: block;
             }
           }
 
           /* Media query for light mode (default behavior) */
           @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
-            .logo {
-              content: url('http://safranilaw.com/Logo.png');
+            .logo-dark {
+              display: none;
+            }
+            .logo-light {
+              display: block;
             }
           }
 
@@ -168,7 +174,10 @@ app.post("/send-email", (req, res) => {
         <div class="email-container">
           <!-- Logo and Sifrani Law in one line -->
           <div class="logo-container">
-            <img class="logo" src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo">
+            <!-- Light mode logo -->
+            <img class="logo logo-light" src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo">
+            <!-- Dark mode logo -->
+            <img class="logo logo-dark" src="http://safranilaw.com/LogoWhite.png" alt="Sifrani Law Logo">
             <span style="font-size: 24px; font-weight: bold; color: #333;">Sifrani Law</span>
           </div>
 
