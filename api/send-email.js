@@ -124,7 +124,7 @@ app.post("/send-email", (req, res) => {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             padding: 10px 20px;
             border-radius: 10px;
           }
@@ -177,7 +177,8 @@ app.post("/send-email", (req, res) => {
         <div class="container">
           <!-- Logo and Sifrani Law in one line with background -->
           <div class="logo-container">
-            <img src="http://safranilaw.com/LogoWhite.png" alt="Sifrani Law Logo" style="filter: brightness(0) invert(1);">
+            <!-- Light theme: Logo.png, Dark theme: LogoWhite.png -->
+            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="filter: brightness(0) invert(1);">
             <span>| Sifrani Law</span>
           </div>
 
