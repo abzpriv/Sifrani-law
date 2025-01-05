@@ -125,28 +125,21 @@ app.post("/send-email", (req, res) => {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: #000; /* Black background for both themes */
+            background-color: #f1f1f1; /* Light background for the header in light mode */
             padding: 10px 20px;
             border-radius: 10px;
             transition: background-color 0.3s ease;
           }
 
-          /* Light theme logo */
-          .header img.light-logo {
+          .header img {
             max-height: 40px;
-            display: block;
-          }
-
-          /* Dark theme logo */
-          .header img.dark-logo {
-            max-height: 40px;
-            display: none;
+            filter: brightness(0) invert(1);
           }
 
           .header span {
             font-size: 24px;
             font-weight: bold;
-            color: #fff;
+            color: #333;
             margin-left: 10px;
           }
 
@@ -183,15 +176,7 @@ app.post("/send-email", (req, res) => {
             }
 
             .header {
-              background-color: #000; /* Black background for dark mode */
-            }
-
-            .header img.light-logo {
-              display: none; /* Hide light logo in dark mode */
-            }
-
-            .header img.dark-logo {
-              display: block; /* Show dark logo in dark mode */
+              background-color: #333; /* Dark background for the header in dark mode */
             }
 
             .header span {
@@ -212,18 +197,17 @@ app.post("/send-email", (req, res) => {
         <div class="container">
           <!-- Logo and Safrani Law in one line with background -->
           <div class="header">
-            <img src="http://safranilaw.com/LogoWhite.png" alt="Safrani Law Logo (Light)" class="light-logo">
-            <img src="http://safranilaw.com/Logo.png" alt="Safrani Law Logo (Dark)" class="dark-logo">
+            <img src="http://safranilaw.com/Logo.png" alt="Safrani Law Logo">
             <span>| Safrani Law</span>
           </div>
 
           <h2>Thank You for Reaching Out</h2>
           <p>Dear ${name},</p>
-          <p>Thank you for choosing Safrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
+          <p>Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
           <p>Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
           <div class="footer">
             <p>We will get back to you shortly. Thank you for your patience.</p>
-            <p>&copy; ${new Date().getFullYear()} Safrani Law</p>
+            <p>&copy; ${new Date().getFullYear()} Sifrani Law</p>
           </div>
         </div>
       </body>
