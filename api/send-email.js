@@ -98,8 +98,8 @@ app.post("/send-email", (req, res) => {
     // Determine the logo and background color based on the theme
     const isDarkTheme = false; // Set to `true` for dark theme, `false` for light theme
     const logo = isDarkTheme
-      ? "http://safranilaw.com/LogoWhite.png" // Dark theme logo
-      : "http://safranilaw.com/Logo.png"; // Light theme logo
+      ? "http://safranilaw.com/LogoWhite.png" // Dark theme logo (white logo)
+      : "http://safranilaw.com/Logo.png"; // Light theme logo (black logo)
 
     // Dark theme: dark background for body, light background for content. Light theme: opposite.
     const backgroundColor = isDarkTheme ? "#222222" : "#ffffff"; // Dark background for the page in dark theme
@@ -116,7 +116,7 @@ app.post("/send-email", (req, res) => {
       <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: ${contentBackgroundColor}; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
         <!-- Logo and Sifrani Law in one line -->
         <div style="display: flex; justify-content: flex-start; align-items: center; background-color: transparent;">
-          <img src="${logo}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
+          <img src="${logo}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px; object-fit: contain;">
           <span style="font-size: 24px; font-weight: bold; color: ${textColor};">| Sifrani Law</span>
         </div>
 
