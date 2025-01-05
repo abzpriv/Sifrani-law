@@ -166,17 +166,17 @@ app.post("/send-email", (req, res) => {
           /* Dark mode styles */
           @media (prefers-color-scheme: dark) {
             body {
-              background-color: #181818;
-              color: #f9f9f9;
+              background-color: #121212; /* Darker background for the body */
+              color: #e0e0e0;
             }
 
             .container {
-              background-color: #2a2a2a;
-              box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+              background-color: #1f1f1f; /* Darker background for the container */
+              box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Lighter shadow for more contrast */
             }
 
             .header {
-              background-color: #333; /* Dark background for the header in dark mode */
+              background-color: #232323; /* Darker background for the header */
             }
 
             .header span {
