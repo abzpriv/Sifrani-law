@@ -72,7 +72,7 @@ app.post("/send-email", (req, res) => {
           <p style="font-size: 18px; color: #333333; line-height: 1.8;">${message}</p>
         </div>
         <div style="margin-top: 40px; text-align: center; font-size: 14px; color: #888888;">
-          <p>Sent from your Sifrani Law contact form. &copy; ${new Date().getFullYear()}</p>
+          <p>Sent from your Safrani law contact form. &copy; ${new Date().getFullYear()}</p>
         </div>
       </div>
     </body>
@@ -116,7 +116,7 @@ app.post("/send-email", (req, res) => {
           <p style="font-size: 18px; line-height: 1.6;">Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
           <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #888888;">
             <p>We will get back to you shortly. Thank you for your patience.</p>
-            <p>&copy; ${new Date().getFullYear()} Sifrani Law</p>
+            <p>&copy; ${new Date().getFullYear()} Safrani law</p>
           </div>
         </div>
       </body>
