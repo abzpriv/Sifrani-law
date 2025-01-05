@@ -95,12 +95,7 @@ app.post("/send-email", (req, res) => {
       return res.status(500).send(error.toString());
     }
 
-    // Assuming `theme` is a parameter that determines the current theme ('dark' or 'light')
-    const logoUrl =
-      theme === "dark" || theme === "Dark" // Add more checks in case the theme is capitalized differently
-        ? "http://safranilaw.com/LogoWhite.png"
-        : "http://safranilaw.com/Logo.png";
-
+    // Send confirmation email to the customer
     const customerMailOptions = {
       from: process.env.GMAIL_USER, // Your email address
       to: email, // Customer's email address
@@ -109,10 +104,10 @@ app.post("/send-email", (req, res) => {
     <html>
       <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333;">
         <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-          <!-- Logo and Sifrani Law in one line -->
-          <div style="display: flex; justify-content: flex-start; align-items: center;">
-            <img src="${logoUrl}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
-            <span style="font-size: 24px; font-weight: bold; color: #333;">| Sifrani Law</span>
+          <!-- Logo and Sifrani Law in one line with background -->
+          <div style="display: flex; justify-content: flex-start; align-items: center; background-color: #333; padding: 10px 20px; border-radius: 10px;">
+            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="max-height: 40px; filter: brightness(0) invert(1);">
+            <span style="font-size: 24px; font-weight: bold; color: #fff; margin-left: 10px;">Sifrani Law</span>
           </div>
 
           <h2 style="text-align: center; color: #555555;">Thank You for Reaching Out</h2>
