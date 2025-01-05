@@ -95,12 +95,13 @@ app.post("/send-email", (req, res) => {
       return res.status(500).send(error.toString());
     }
 
-    const isDarkTheme = true; // Set to `true` for dark theme, `false` for light theme
+    // Determine the logo and background color based on the theme
+    const isDarkTheme = false; // Set to `true` for dark theme, `false` for light theme
     const logo = isDarkTheme
       ? "http://safranilaw.com/LogoWhite.png" // Dark theme logo
       : "http://safranilaw.com/Logo.png"; // Light theme logo
-    const backgroundColor = isDarkTheme ? "#222222" : "#ffffff";
-    const textColor = isDarkTheme ? "#f5f5f5" : "#333333";
+    const backgroundColor = isDarkTheme ? "#222222" : "#ffffff"; // Keep the background color the same
+    const textColor = isDarkTheme ? "#f5f5f5" : "#333333"; // Keep the text color the same
 
     const customerMailOptions = {
       from: process.env.GMAIL_USER, // Your email address
@@ -109,12 +110,10 @@ app.post("/send-email", (req, res) => {
       html: `
   <html>
     <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: ${backgroundColor}; color: ${textColor};">
-      <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: ${backgroundColor}; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+      <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
         <!-- Logo and Sifrani Law in one line -->
         <div style="display: flex; justify-content: flex-start; align-items: center;">
-          <img src="${logo}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px; ${
-        isDarkTheme ? "filter: invert(100%);" : ""
-      }">
+          <img src="${logo}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
           <span style="font-size: 24px; font-weight: bold; color: ${textColor};">| Sifrani Law</span>
         </div>
 
@@ -128,7 +127,7 @@ app.post("/send-email", (req, res) => {
           isDarkTheme ? "#888888" : "#555555"
         };">
           <p>We will get back to you shortly. Thank you for your patience.</p>
-          <p>&copy; ${new Date().getFullYear()} Sifrani Law</p>
+          <p>&copy; ${new Date().getFullYear()} Safrani Law</p>
         </div>
       </div>
     </body>
