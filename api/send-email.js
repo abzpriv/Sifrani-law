@@ -97,7 +97,7 @@ app.post("/send-email", (req, res) => {
 
     // Assuming `theme` is a parameter that determines the current theme ('dark' or 'light')
     const logoUrl =
-      theme === "dark"
+      theme === "dark" || theme === "Dark" // Add more checks in case the theme is capitalized differently
         ? "http://safranilaw.com/LogoWhite.png"
         : "http://safranilaw.com/Logo.png";
 
