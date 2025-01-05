@@ -102,7 +102,7 @@ app.post("/send-email", (req, res) => {
       subject: "Thank You for Reaching Out to Sifrani Law",
       html: `
     <html>
-      <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333;">
+      <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333;">
         <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
           <!-- Logo and Sifrani Law in one line -->
           <div style="display: flex; justify-content: flex-start; align-items: center;">
