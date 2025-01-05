@@ -125,7 +125,7 @@ app.post("/send-email", (req, res) => {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: #f1f1f1; /* Light background for the header in light mode */
+            background-color: #000; /* Black background for the header in light mode */
             padding: 10px 20px;
             border-radius: 10px;
             transition: background-color 0.3s ease;
@@ -139,7 +139,7 @@ app.post("/send-email", (req, res) => {
           .header span {
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: #fff; /* White text for better contrast */
             margin-left: 10px;
           }
 
