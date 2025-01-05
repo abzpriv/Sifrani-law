@@ -100,8 +100,11 @@ app.post("/send-email", (req, res) => {
     const logo = isDarkTheme
       ? "http://safranilaw.com/LogoWhite.png" // Dark theme logo
       : "http://safranilaw.com/Logo.png"; // Light theme logo
-    const backgroundColor = isDarkTheme ? "#222222" : "#ffffff"; // Keep the background color the same
-    const textColor = isDarkTheme ? "#f5f5f5" : "#333333"; // Keep the text color the same
+
+    // Dark theme: dark background for body, light background for content. Light theme: opposite.
+    const backgroundColor = isDarkTheme ? "#222222" : "#ffffff"; // Dark background for the page in dark theme
+    const contentBackgroundColor = "#ffffff"; // Light background for the content box
+    const textColor = isDarkTheme ? "#f5f5f5" : "#333333"; // Light text for dark theme
 
     const customerMailOptions = {
       from: process.env.GMAIL_USER, // Your email address
@@ -110,7 +113,7 @@ app.post("/send-email", (req, res) => {
       html: `
   <html>
     <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: ${backgroundColor}; color: ${textColor};">
-      <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+      <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: ${contentBackgroundColor}; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
         <!-- Logo and Sifrani Law in one line -->
         <div style="display: flex; justify-content: flex-start; align-items: center;">
           <img src="${logo}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
