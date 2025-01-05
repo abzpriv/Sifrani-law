@@ -162,7 +162,7 @@ app.post("/send-email", (req, res) => {
               background-color: #222;
             }
             .logo-container img {
-              content: url('http://safranilaw.com/LogoWhite.png'); /* Dark theme logo */
+              content: url('http://safranilaw.com/LogoWhite.png') !important; /* Force dark theme logo */
             }
             .logo-container span {
               color: #fff;
