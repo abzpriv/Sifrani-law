@@ -98,7 +98,7 @@ app.post("/send-email", (req, res) => {
     const customerMailOptions = {
       from: process.env.GMAIL_USER, // Your email address
       to: email, // Customer's email address
-      subject: "Thank You for Reaching Out to Sifrani Law",
+      subject: "Thank You for Reaching Out to Safrani Law",
       html: `
     <html>
       <head>
@@ -125,7 +125,7 @@ app.post("/send-email", (req, res) => {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: #000;
+            background-color: #000; /* Black background for both themes */
             padding: 10px 20px;
             border-radius: 10px;
             transition: background-color 0.3s ease;
@@ -176,7 +176,7 @@ app.post("/send-email", (req, res) => {
             }
 
             .header {
-              background-color: #333;
+              background-color: #000; /* Ensure black background in dark mode */
             }
 
             .header span {
@@ -197,8 +197,8 @@ app.post("/send-email", (req, res) => {
         <div class="container">
           <!-- Logo and Sifrani Law in one line with background -->
           <div class="header">
-            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo">
-            <span>| Sifrani Law</span>
+            <img src="http://safranilaw.com/Logo.png" alt="Safrani Law Logo">
+            <span>| Safrani Law</span>
           </div>
 
           <h2>Thank You for Reaching Out</h2>
