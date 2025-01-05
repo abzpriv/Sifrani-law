@@ -95,32 +95,43 @@ app.post("/send-email", (req, res) => {
       return res.status(500).send(error.toString());
     }
 
-    // Send confirmation email to the customer
+    // Determine the logo and background color based on the theme
+    const isDarkTheme = false; // Set to `true` for dark theme, `false` for light theme
+    const logo = isDarkTheme
+      ? "http://safranilaw.com/LogoWhite.png" // Dark theme logo
+      : "http://safranilaw.com/Logo.png"; // Light theme logo
+    const backgroundColor = isDarkTheme ? "#222222" : "#ffffff";
+    const textColor = isDarkTheme ? "#f5f5f5" : "#333333";
+
     const customerMailOptions = {
       from: process.env.GMAIL_USER, // Your email address
       to: email, // Customer's email address
       subject: "Thank You for Reaching Out to Sifrani Law",
       html: `
-    <html>
-      <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333;">
-        <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-          <!-- Logo and Sifrani Law in one line -->
-          <div style="display: flex; justify-content: flex-start; align-items: center;">
-            <img src="http://safranilaw.com/Logo.png" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
-            <span style="font-size: 24px; font-weight: bold; color: #333;">Sifrani Law</span>
-          </div>
-
-          <h2 style="text-align: center; color: #555555;">Thank You for Reaching Out</h2>
-          <p style="font-size: 18px; line-height: 1.6;">Dear ${name},</p>
-          <p style="font-size: 18px; line-height: 1.6;">Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
-          <p style="font-size: 18px; line-height: 1.6;">Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
-          <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #888888;">
-            <p>We will get back to you shortly. Thank you for your patience.</p>
-            <p>&copy; ${new Date().getFullYear()} Safrani law</p>
-          </div>
+  <html>
+    <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: ${backgroundColor}; color: ${textColor};">
+      <div style="max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <!-- Logo and Sifrani Law in one line -->
+        <div style="display: flex; justify-content: flex-start; align-items: center;">
+          <img src="${logo}" alt="Sifrani Law Logo" style="max-height: 40px; margin-right: 10px;">
+          <span style="font-size: 24px; font-weight: bold; color: ${textColor};">| Sifrani Law</span>
         </div>
-      </body>
-    </html>
+
+        <h2 style="text-align: center; color: ${
+          isDarkTheme ? "#e0e0e0" : "#555555"
+        };">Thank You for Reaching Out</h2>
+        <p style="font-size: 18px; line-height: 1.6;">Dear ${name},</p>
+        <p style="font-size: 18px; line-height: 1.6;">Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
+        <p style="font-size: 18px; line-height: 1.6;">Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
+        <div style="text-align: center; margin-top: 30px; font-size: 14px; color: ${
+          isDarkTheme ? "#888888" : "#555555"
+        };">
+          <p>We will get back to you shortly. Thank you for your patience.</p>
+          <p>&copy; ${new Date().getFullYear()} Safrani Law</p>
+        </div>
+      </div>
+    </body>
+  </html>
   `,
     };
 
