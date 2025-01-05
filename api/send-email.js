@@ -197,7 +197,7 @@ app.post("/send-email", (req, res) => {
         <div class="container">
           <!-- Logo and Safrani Law in one line with background -->
           <div class="header">
-            <img src="http://safranilaw.com/Logo.png" alt="Safrani Law Logo">
+            <img src="http://safranilaw.com/LogoWhite.png" alt="Safrani Law Logo">
             <span>| Safrani Law</span>
           </div>
 
