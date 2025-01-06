@@ -151,7 +151,7 @@ app.post("/send-email", (req, res) => {
         .header img {
           width: 150px; /* Slightly larger logo */
           height: 100px;
-          border-radius: 50%;
+          border-radius: 20%;
           margin-bottom: 10px;
         }
 
