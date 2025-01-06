@@ -31,52 +31,70 @@ app.post("/send-email", (req, res) => {
 
   // Email content for dark theme
   const darkThemeHTML = `
-  <html>
-    <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #222222; color: #f5f5f5;">
-      <div style="max-width: 700px; margin: 0 auto; background-color: #2c2f36; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
-        <div style="background-color: #1a1c20; color: #ffffff; padding: 25px; text-align: center; border-radius: 15px 15px 0 0;">
-          <h1 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e0e0e0;">Contact Form Submission</h1>
+<html>
+  <body style="font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #121212; color: #e0e0e0;">
+    <div style="max-width: 750px; margin: 0 auto; background-color: #1d1d1d; padding: 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);">
+      <!-- Header Section -->
+      <div style="background-color: #252525; padding: 25px; text-align: center; border-radius: 12px 12px 0 0; border-bottom: 4px solid #3a3a3a;">
+        <h1 style="margin: 0; font-size: 36px; font-weight: bold; color: #f0f0f0;">Safrani Law</h1>
+        <p style="margin: 0; font-size: 16px; color: #aaaaaa;">Professional Legal Solutions at Your Fingertips</p>
+      </div>
+
+      <!-- Body Section -->
+      <div style="padding: 30px;">
+        <h2 style="color: #e0e0e0; font-size: 28px; margin-bottom: 20px;">Contact Form Submission</h2>
+        <div style="margin-bottom: 20px;">
+          <p style="font-size: 18px; color: #bcbcbc; margin: 0;"><strong>Name:</strong> ${name}</p>
+          <p style="font-size: 18px; color: #bcbcbc; margin: 0;"><strong>Email:</strong> ${email}</p>
+          <p style="font-size: 18px; color: #bcbcbc; margin: 0;"><strong>Subject:</strong> ${subject}</p>
         </div>
-        <div style="margin-top: 25px;">
-          <p style="font-size: 20px; line-height: 1.8; margin-bottom: 12px; color: #d0d3d8;"><strong>Name:</strong> ${name}</p>
-          <p style="font-size: 20px; line-height: 1.8; margin-bottom: 12px; color: #d0d3d8;"><strong>Email:</strong> ${email}</p>
-          <p style="font-size: 20px; line-height: 1.8; margin-bottom: 12px; color: #d0d3d8;"><strong>Subject:</strong> ${subject}</p>
-        </div>
-        <div style="background-color: #343a40; border-left: 6px solid #555555; border-radius: 10px; padding: 25px; margin-top: 25px; font-size: 18px; color: #c8c8c8;">
-          <p style="font-size: 20px; font-weight: 700; color: #e0e0e0;">Message:</p>
-          <p style="font-size: 18px; color: #f5f5f5; line-height: 1.8;">${message}</p>
-        </div>
-        <div style="margin-top: 40px; text-align: center; font-size: 14px; color: #9e9e9e;">
-          <p>Sent from your Safrani Law contact form. &copy; ${new Date().getFullYear()}</p>
+        <div style="background-color: #2c2c2c; padding: 20px; border-left: 6px solid #0073e6; border-radius: 8px; margin-top: 20px;">
+          <p style="font-size: 20px; font-weight: bold; margin: 0; color: #ffffff;">Message:</p>
+          <p style="font-size: 18px; line-height: 1.8; color: #dcdcdc;">${message}</p>
         </div>
       </div>
-    </body>
-  </html>
+
+      <!-- Footer Section -->
+      <div style="background-color: #252525; text-align: center; padding: 20px; border-radius: 0 0 12px 12px; border-top: 4px solid #3a3a3a;">
+        <p style="font-size: 14px; color: #888888;">Sent from your Safrani Law contact form. &copy; ${new Date().getFullYear()}</p>
+      </div>
+    </div>
+  </body>
+</html>
 `;
 
   // Email content for light theme
   const lightThemeHTML = `
-  <html>
-    <body style="font-family: 'Garamond', serif; margin: 0; padding: 0; background-color: #ffffff; color: #333333;">
-      <div style="max-width: 700px; margin: 0 auto; background-color: #f8f9fa; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-        <div style="background-color: #555555; color: #ffffff; padding: 25px; text-align: center; border-radius: 15px 15px 0 0;">
-          <h1 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e0e0e0;">Contact Form Submission</h1>
+<html>
+  <body style="font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f7f8fa; color: #333;">
+    <div style="max-width: 750px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);">
+      <!-- Header Section -->
+      <div style="background-color: #00509e; padding: 25px; text-align: center; border-radius: 12px 12px 0 0; border-bottom: 4px solid #003f7d;">
+        <h1 style="margin: 0; font-size: 36px; font-weight: bold; color: #ffffff;">Safrani Law</h1>
+        <p style="margin: 0; font-size: 16px; color: #dfe6ee;">Professional Legal Solutions at Your Fingertips</p>
+      </div>
+
+      <!-- Body Section -->
+      <div style="padding: 30px;">
+        <h2 style="color: #00509e; font-size: 28px; margin-bottom: 20px;">Contact Form Submission</h2>
+        <div style="margin-bottom: 20px;">
+          <p style="font-size: 18px; color: #555; margin: 0;"><strong>Name:</strong> ${name}</p>
+          <p style="font-size: 18px; color: #555; margin: 0;"><strong>Email:</strong> ${email}</p>
+          <p style="font-size: 18px; color: #555; margin: 0;"><strong>Subject:</strong> ${subject}</p>
         </div>
-        <div style="margin-top: 25px;">
-          <p style="font-size: 20px; line-height: 1.8; margin-bottom: 12px; color: #555555;"><strong>Name:</strong> ${name}</p>
-          <p style="font-size: 20px; line-height: 1.8; margin-bottom: 12px; color: #555555;"><strong>Email:</strong> ${email}</p>
-          <p style="font-size: 20px; line-height: 1.8; margin-bottom: 12px; color: #555555;"><strong>Subject:</strong> ${subject}</p>
-        </div>
-        <div style="background-color: #f1f3f5; border-left: 6px solid #888888; border-radius: 10px; padding: 25px; margin-top: 25px; font-size: 18px; color: #333333;">
-          <p style="font-size: 20px; font-weight: 700; color: #555555;">Message:</p>
-          <p style="font-size: 18px; color: #333333; line-height: 1.8;">${message}</p>
-        </div>
-        <div style="margin-top: 40px; text-align: center; font-size: 14px; color: #888888;">
-          <p>Sent from your Safrani law contact form. &copy; ${new Date().getFullYear()}</p>
+        <div style="background-color: #f1f4f9; padding: 20px; border-left: 6px solid #00509e; border-radius: 8px; margin-top: 20px;">
+          <p style="font-size: 20px; font-weight: bold; margin: 0; color: #003f7d;">Message:</p>
+          <p style="font-size: 18px; line-height: 1.8; color: #333;">${message}</p>
         </div>
       </div>
-    </body>
-  </html>
+
+      <!-- Footer Section -->
+      <div style="background-color: #00509e; text-align: center; padding: 20px; border-radius: 0 0 12px 12px; border-top: 4px solid #003f7d;">
+        <p style="font-size: 14px; color: #dfe6ee;">Sent from your Safrani Law contact form. &copy; ${new Date().getFullYear()}</p>
+      </div>
+    </div>
+  </body>
+</html>
 `;
 
   // Select the correct HTML content based on the theme
@@ -207,7 +225,7 @@ app.post("/send-email", (req, res) => {
       <div class="container">
         <!-- Header Section -->
         <div class="header">
-          <img src="http://safranilaw.com/Law-email-Logo.png" alt="Safrani Law Logo">
+          <img src="http://safranilaw.com/LogoWhite.png" alt="Safrani Law Logo">
           <h1>Safrani Law</h1>
           <p>Your Trusted Legal Partner</p>
         </div>
