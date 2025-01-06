@@ -100,120 +100,144 @@ app.post("/send-email", (req, res) => {
       to: email, // Customer's email address
       subject: "Thank You for Reaching Out to Safrani Law",
       html: `
-    <html>
-      <head>
-        <style>
-          /* Default styles */
-          body {
-            font-family: 'Garamond', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+  <html>
+    <head>
+      <style>
+        /* General Reset */
+        body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f7;
+          color: #333;
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 700px;
+          margin: 40px auto;
+          background: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          padding: 0;
+        }
+
+        .header {
+          background: linear-gradient(90deg, #00274d, #00509e);
+          color: #fff;
+          padding: 20px;
+          text-align: center;
+        }
+
+        .header img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
+
+        .header h1 {
+          font-size: 24px;
+          margin: 10px 0 0;
+        }
+
+        .header p {
+          font-size: 14px;
+          margin: 0;
+        }
+
+        .body {
+          padding: 30px;
+        }
+
+        .body h2 {
+          color: #00274d;
+          text-align: center;
+          font-size: 22px;
+          margin-bottom: 20px;
+        }
+
+        .body p {
+          margin: 10px 0;
+          font-size: 16px;
+          color: #555;
+        }
+
+        .body .highlight {
+          background: #f4f4f7;
+          padding: 15px;
+          border-left: 5px solid #00509e;
+          margin: 20px 0;
+          font-style: italic;
+          color: #333;
+        }
+
+        .footer {
+          background: #f4f4f7;
+          text-align: center;
+          padding: 20px;
+          font-size: 14px;
+          color: #888;
+        }
+
+        .footer a {
+          color: #00509e;
+          text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+          .header h1 {
+            font-size: 20px;
           }
 
-          .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          }
-
-          .header {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            background-color: #000; /* Black background for the header in light mode */
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: background-color 0.3s ease;
-          }
-
-          .header img {
-            max-height: 150px; /* Smaller size */
-            width: 100px; /* Ensure width matches height for perfect circle */
-            border-radius: 50%; /* Makes the image fully rounded */
-            filter: brightness(0) invert(1); /* Optional: Keeps the logo visible */
-          }
-
-          .header span {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff; /* White text for better contrast */
-            margin-left: 10px;
-          }
-
-          h2 {
-            text-align: center;
-            color: #555555;
-            font-size: 26px;
-            margin-top: 20px;
-          }
-
-          p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-          }
-
-          .footer {
-            text-align: center;
-            margin-top: 30px;
+          .body p {
             font-size: 14px;
-            color: #888888;
           }
 
-          /* Dark mode styles */
-          @media (prefers-color-scheme: dark) {
-            body {
-              background-color: #121212; /* Darker background for the body */
-              color: #e0e0e0;
-            }
-
-            .container {
-              background-color: #1f1f1f; /* Darker background for the container */
-              box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Lighter shadow for more contrast */
-            }
-
-            .header {
-              background-color: #232323; /* Darker background for the header */
-            }
-
-            .header span {
-              color: #ffffff;
-            }
-
-            p {
-              color: #e0e0e0;
-            }
-
-            .footer {
-              color: #bbbbbb;
-            }
+          .body h2 {
+            font-size: 18px;
           }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <!-- Logo and Safrani Law in one line with background -->
-          <div class="header">
-            <img src="http://safranilaw.com/Law-email-Logo.png" alt="Safrani Law Logo">
-            <span>| Safrani Law</span>
-          </div>
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+          <img src="http://safranilaw.com/Law-email-Logo.png" alt="Safrani Law Logo">
+          <h1>Safrani Law</h1>
+          <p>Your Trusted Legal Partner</p>
+        </div>
 
+        <!-- Body Section -->
+        <div class="body">
           <h2>Thank You for Reaching Out</h2>
           <p>Dear ${name},</p>
-          <p>Thank you for choosing Safrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
-          <p>Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
-          <div class="footer">
-            <p>We will get back to you shortly. Thank you for your patience.</p>
-            <p>&copy; ${new Date().getFullYear()} Safrani Law</p>
+          <p>
+            We appreciate your interest in Safrani Law and thank you for reaching out to us. Our dedicated team is
+            currently reviewing your inquiry and will respond with a tailored solution shortly.
+          </p>
+          <div class="highlight">
+            "Your legal matters are in safe hands. We are here to guide you every step of the way."
           </div>
+          <p>
+            Please note that this is an automated response. If your matter is urgent, feel free to contact us directly
+            via our <a href="http://safranilaw.com/contact" target="_blank">contact page</a>.
+          </p>
         </div>
-      </body>
-    </html>
+
+        <!-- Footer Section -->
+        <div class="footer">
+          <p>&copy; ${new Date().getFullYear()} Safrani Law. All rights reserved.</p>
+          <p>
+            Visit us: <a href="http://safranilaw.com" target="_blank">www.safranilaw.com</a> | Call us: +1 (800) 123-4567
+          </p>
+        </div>
+      </div>
+    </body>
+  </html>
   `,
     };
 
