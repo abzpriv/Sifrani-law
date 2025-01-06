@@ -207,7 +207,7 @@ app.post("/send-email", (req, res) => {
       <div class="container">
         <!-- Header Section -->
         <div class="header">
-          <img src="http://safranilaw.com/LogoWhite.png" alt="Safrani Law Logo">
+          <img src="http://safranilaw.com/Law-email-Logo.png" alt="Safrani Law Logo">
           <h1>Safrani Law</h1>
           <p>Your Trusted Legal Partner</p>
         </div>
