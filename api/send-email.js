@@ -124,27 +124,28 @@ app.post("/send-email", (req, res) => {
         }
 
         .header {
-          background: linear-gradient(90deg, #00274d, #00509e);
-          color: #fff;
-          padding: 20px;
+          background: #333333; /* Dark gray header */
+          color: #ffffff;
+          padding: 30px;
           text-align: center;
         }
 
         .header img {
-          width: 80px;
-          height: 80px;
+          width: 100px; /* Slightly larger logo */
+          height: 100px;
           border-radius: 50%;
           margin-bottom: 10px;
         }
 
         .header h1 {
-          font-size: 24px;
-          margin: 10px 0 0;
+          font-size: 26px;
+          margin: 15px 0 0;
+          font-weight: bold;
         }
 
         .header p {
           font-size: 14px;
-          margin: 0;
+          margin: 5px 0 0;
         }
 
         .body {
@@ -152,25 +153,25 @@ app.post("/send-email", (req, res) => {
         }
 
         .body h2 {
-          color: #00274d;
+          color: #333333;
           text-align: center;
-          font-size: 22px;
+          font-size: 24px;
           margin-bottom: 20px;
         }
 
         .body p {
           margin: 10px 0;
           font-size: 16px;
-          color: #555;
+          color: #555555;
         }
 
         .body .highlight {
-          background: #f4f4f7;
+          background: #f9f9f9;
           padding: 15px;
-          border-left: 5px solid #00509e;
+          border-left: 5px solid #333333;
           margin: 20px 0;
           font-style: italic;
-          color: #333;
+          color: #444444;
         }
 
         .footer {
@@ -178,18 +179,18 @@ app.post("/send-email", (req, res) => {
           text-align: center;
           padding: 20px;
           font-size: 14px;
-          color: #888;
+          color: #888888;
         }
 
         .footer a {
-          color: #00509e;
+          color: #333333;
           text-decoration: none;
         }
 
         /* Responsive Design */
         @media only screen and (max-width: 600px) {
           .header h1 {
-            font-size: 20px;
+            font-size: 22px;
           }
 
           .body p {
@@ -224,7 +225,7 @@ app.post("/send-email", (req, res) => {
           </div>
           <p>
             Please note that this is an automated response. If your matter is urgent, feel free to contact us directly
-            via our <a href="http://safranilaw.com/contact" target="_blank">contact page</a>.
+            via our <a href="https://safranilaw.com/#contact" target="_blank">contact page</a>.
           </p>
         </div>
 
@@ -232,7 +233,7 @@ app.post("/send-email", (req, res) => {
         <div class="footer">
           <p>&copy; ${new Date().getFullYear()} Safrani Law. All rights reserved.</p>
           <p>
-            Visit us: <a href="http://safranilaw.com" target="_blank">www.safranilaw.com</a> | Call us: +1 (800) 123-4567
+            Visit us: <a href="http://safranilaw.com" target="_blank">www.safranilaw.com</a> | Call us: +92 320 4343047
           </p>
         </div>
       </div>
