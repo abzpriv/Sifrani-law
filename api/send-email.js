@@ -47,7 +47,7 @@ app.post("/send-email", (req, res) => {
           <p style="font-size: 18px; color: #f5f5f5; line-height: 1.8;">${message}</p>
         </div>
         <div style="margin-top: 40px; text-align: center; font-size: 14px; color: #9e9e9e;">
-          <p>Sent from your Sifrani Law contact form. &copy; ${new Date().getFullYear()}</p>
+          <p>Sent from your Safrani Law contact form. &copy; ${new Date().getFullYear()}</p>
         </div>
       </div>
     </body>
@@ -132,8 +132,10 @@ app.post("/send-email", (req, res) => {
           }
 
           .header img {
-            max-height: 40px;
-            filter: brightness(0) invert(1);
+            max-height: 30px; /* Smaller size */
+            width: 30px; /* Ensure width matches height for perfect circle */
+            border-radius: 50%; /* Makes the image fully rounded */
+            filter: brightness(0) invert(1); /* Optional: Keeps the logo visible */
           }
 
           .header span {
@@ -197,17 +199,17 @@ app.post("/send-email", (req, res) => {
         <div class="container">
           <!-- Logo and Safrani Law in one line with background -->
           <div class="header">
-            <img src="http://safranilaw.com/LogoWhite.png" alt="Safrani Law Logo">
+            <img src="http://safranilaw.com/Law-email-Logo.png" alt="Safrani Law Logo">
             <span>| Safrani Law</span>
           </div>
 
           <h2>Thank You for Reaching Out</h2>
           <p>Dear ${name},</p>
-          <p>Thank you for choosing Sifrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
+          <p>Thank you for choosing Safrani Law as your trusted legal guide. We appreciate you taking the time to contact us, and we are committed to providing you with the best possible service. Our team is reviewing your message and will get back to you as soon as possible with a tailored response.</p>
           <p>Please note that this is an auto-generated email, and we kindly ask that you do not reply to this message. If you have any urgent inquiries, feel free to contact us directly through our official channels.</p>
           <div class="footer">
             <p>We will get back to you shortly. Thank you for your patience.</p>
-            <p>&copy; ${new Date().getFullYear()} Sifrani Law</p>
+            <p>&copy; ${new Date().getFullYear()} Safrani Law</p>
           </div>
         </div>
       </body>
