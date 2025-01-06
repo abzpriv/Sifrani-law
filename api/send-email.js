@@ -132,8 +132,8 @@ app.post("/send-email", (req, res) => {
           }
 
           .header img {
-            max-height: 50px; /* Smaller size */
-            width: 50px; /* Ensure width matches height for perfect circle */
+            max-height: 150px; /* Smaller size */
+            width: 100px; /* Ensure width matches height for perfect circle */
             border-radius: 50%; /* Makes the image fully rounded */
             filter: brightness(0) invert(1); /* Optional: Keeps the logo visible */
           }
