@@ -114,7 +114,7 @@ app.post("/send-email", (req, res) => {
     }
 
     const customerMailOptions = {
-      from: process.env.GMAIL_USER, // Your email address
+      from: process.env.GMAIL_USER, // Your email addressrhejgdehjde
       to: email, // Customer's email address
       subject: "Thank You for Reaching Out to Safrani Law",
       html: `
